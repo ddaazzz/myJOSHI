@@ -10,9 +10,9 @@ const Footer = () => {
                     <img src="img/logo.png" style={{ maxWidth: '150px' }} />
                 </div>
                 <span className='tw-px-3 md:tw-px-12  md:tw-block '>
-                    <Link href="/"><a className="fab-icon-bg tw-mr-6 tw-my-6"><FontAwesomeIcon icon={["fab", "twitter"]} /></a></Link>
+                    <Link href="https://x.com/myjoshiofficial/"><a className="fab-icon-bg tw-mr-6 tw-my-6"><FontAwesomeIcon icon={["fab", "twitter"]} /></a></Link>
                     <Link href="/"><a className="fab-icon-bg tw-mr-6 tw-my-6"><FontAwesomeIcon icon={["fab", "discord"]} /></a></Link>
-                    <Link href="/"><a className="fab-icon-bg tw-my-6"><FontAwesomeIcon icon={["fab", "instagram"]} /></a></Link>
+                    <Link href="https://www.instagram.com/myjoshiofficial/"><a className="fab-icon-bg tw-my-6"><FontAwesomeIcon icon={["fab", "instagram"]} /></a></Link>
                     <p className='heading-color tw-text-right'  >@All Rights Reserved</p>
                 </span>
 
