@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+
+
+import type { FC } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Row, Col } from 'react-bootstrap';
+import Image from 'next/image';
 
-function ContestantModal(props) {
+interface ContestantModalProps {
+    isShow: boolean;
+    onHide: () => void;
+}
+
+const ContestantModal: FC<ContestantModalProps> = (props) => {
 
     return (
         <Modal size="lg" centered show={props.isShow} onHide={() => props.onHide()}>
@@ -11,12 +20,12 @@ function ContestantModal(props) {
             <Modal.Body className="bg-1" >
                 <Row className="md:tw-px-16 tw-px-0 md:tw-pt-16 tw-pt-4" >
                     <Col md={3} xs={12} className="align-self-center text-center">
-                        <img src="./img/1.png" className='contestant-modal-profile' />
+                        <Image src="/img/1.png" alt="Contestant profile" className='contestant-modal-profile' width={200} height={200} />
                     </Col>
                     <Col md={9} xs={12} className="align-self-center">
                         <p className='text-black tw-mb-0'>10 號參賽者</p>
                         <h2 className="text-black tw-mt-0 tw-mb-4">Summer LAI</h2>
-                        <Button size="md">立即投票</Button>
+                        <Button size="lg">立即投票</Button>
                     </Col>
                 </Row>
                 <Row className="md:tw-px-16 tw-px-0 md:tw-pt-16 tw-pt-4 tw-mb-16 " >
@@ -26,10 +35,11 @@ function ContestantModal(props) {
                         kpop可以話已經滲透曬我成個中學生涯，我都好明白所有idol都係經過漫長又嚴厲既訓練先可以出道到，所以如果揀中咗我，我係一定會全力以赴同埋付出更多時間同努力。我絕對唔會退縮既，我要入女團！V
                     </p>
                     <h2 className='tw-mt-8 tw-mb-4'>投稿影片</h2>
-                    <iframe width="720" height="500" src="https://www.youtube.com/embed/BA7fdSkp8ds" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="720" height="500" src="https://www.youtube.com/embed/BA7fdSkp8ds" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </Row>
             </Modal.Body>
         </Modal>
     );
 }
+
 export default ContestantModal;
