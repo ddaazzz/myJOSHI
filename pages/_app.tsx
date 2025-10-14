@@ -1,4 +1,11 @@
 
+
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config, library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
   DynamicContextProvider,
   DynamicWidget,
