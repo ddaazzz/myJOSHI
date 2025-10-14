@@ -46,7 +46,6 @@ const NavBar = () => {
           <div className="tw-ml-4 tw-hidden md:tw-block">
             <DynamicWidget
               buttonClassName="tw-font-bold tw-text-white tw-text-lg tw-font-[rocko] tw-shadow-none tw-bg-transparent hover:tw-bg-transparent focus:tw-bg-transparent tw-border-none"
-              innerButtonClassName="tw-font-bold tw-text-white tw-font-[rocko]"
             />
           </div>
         </div>
