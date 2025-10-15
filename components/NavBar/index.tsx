@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 import Link from 'next/link';
 import { useRouter } from "next/router";
-import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
+import { useDynamicContext } from '@dynamic-labs/sdk-react-core';
 const NavBar = () => {
   const [expanded, setExpanded] = useState(false);
   const { locale, locales } = useRouter();
   const [showSwitcher, setShowSwitcher] = useState(false);
+  const { showAuthFlow } = useDynamicContext() || {};
   return (
     <Navbar expand="xl" expanded={expanded} className="tw-px-3 md:tw-px-3 navbar" collapseOnSelect={true}>
       <Link href="/">
@@ -19,10 +20,16 @@ const NavBar = () => {
         <div className='tw-w-full tw-max-h-auto tw-py-2 md:tw-flex-row tw-flex-col tw-flex tw-items-center tw-justify-center'>
           <div className="border-right-nav nav-item"><Link href="/" ><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "Home" : "トップ"}</a></Link></div>
           <div className="border-right-nav nav-item"><Link href="/joshiryoku" ><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "Joshiryoku" : "女子力クラブ"}</a></Link></div>
-          <div className="border-right-nav nav-item"><Link href="/roadmap"><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "Roadmap" : "ロードマップ"}</a></Link></div>
-          <div className="border-right-nav nav-item"><Link href="/team"><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "Meet the Team" : "チームに会う"}</a></Link></div>
-          <div className="border-right-nav nav-item"><Link href="/contestants"><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "Contestants" : "出場者"}</a></Link></div>
+          <div className="border-right-nav nav-item"><Link href="/mimoto/art"><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "Mimoto Marketplace" : "ミモトマーケット"}</a></Link></div>
           <div className="nav-item"><Link href="/faq"><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "FAQ" : "よくある質問"}</a></Link></div>
+          <button
+            className="nav-link tw-font-bold tw-text-white tw-text-lg tw-font-[rocko] tw-shadow-none tw-bg-transparent hover:tw-bg-transparent focus:tw-bg-transparent tw-border-none tw-ml-4"
+            data-testid="ConnectButton"
+            onClick={typeof showAuthFlow === 'function' ? showAuthFlow : undefined}
+            style={{ fontFamily: 'rocko', fontWeight: 700, color: 'white', background: 'transparent', border: 'none' }}
+          >
+            Connect Wallet
+          </button>
         </div>
         <div className="tw-flex tw-items-center tw-ml-auto">
           <div className="nav-item dropdown">
@@ -43,11 +50,7 @@ const NavBar = () => {
               })}
             </div>}
           </div>
-          <div className="tw-ml-4 tw-hidden md:tw-block">
-            <DynamicWidget
-              buttonClassName="tw-font-bold tw-text-white tw-text-lg tw-font-[rocko] tw-shadow-none tw-bg-transparent hover:tw-bg-transparent focus:tw-bg-transparent tw-border-none"
-            />
-          </div>
+          {/* DynamicWidget removed from here, now triggered by custom button above */}
         </div>
       </Navbar.Collapse>
     </Navbar>
