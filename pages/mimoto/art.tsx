@@ -4,11 +4,29 @@ import AdvancedFilters from '../../components/mimoto/marketplace/AdvancedFilters
 import MarketplaceBanner from '../../components/mimoto/marketplace/MarketplaceBanner';
 import OfferBook from '../../components/mimoto/marketplace/OfferBook';
 // TODO: Replace these with real data fetching or API integration
-const NFT = { list: async () => [] };
+// Demo KOL data
+const KOL_LIST = Array.from({ length: 20 }).map((_, i) => ({
+  id: `kol${i+1}`,
+  name: `KOL ${i+1}`,
+  attribute: [
+    'Fashion Icon', 'Tech Guru', 'Fitness Coach', 'Travel Blogger', 'Chef', 'Artist', 'Musician', 'Entrepreneur', 'Gamer', 'Influencer',
+    'Photographer', 'Model', 'Actor', 'Comedian', 'Writer', 'Dancer', 'Podcaster', 'Teacher', 'Designer', 'Vlogger'
+  ][i % 20],
+  image_url: `/img/${(i % 9) + 1}.png`,
+  mimoto: `Mimoto #${i+1}`,
+  current_price: (Math.random() * 2).toFixed(2),
+  interactions: Math.floor(Math.random() * 1000),
+  content: [
+    { type: 'photo', url: `/img/${(i % 9) + 1}.png`, locked: true },
+    { type: 'video', url: `/video/Miku.mp4`, locked: true }
+  ]
+}));
+
+const NFT = { list: async () => KOL_LIST };
 const TradeOffer = { filter: async () => [] };
 
 export default function MimotoMarketplace() {
-  const [nfts, setNfts] = useState([]);
+  const [nfts, setNfts] = useState<any[]>([]);
   const [offers, setOffers] = useState([]);
   const [filteredNfts, setFilteredNfts] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +78,14 @@ export default function MimotoMarketplace() {
   return (
     <div className="min-h-screen bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <MarketplaceBanner />
+        <div className="relative overflow-hidden rounded-3xl bg-white/50 backdrop-blur-xl border border-pink-100/80 mb-8 shadow-lg p-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-stone-800 mb-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-500">Mimotos</span> Collection
+          </h1>
+          <p className="text-xl text-stone-600 mb-8 max-w-2xl">
+            Discover and support your favorite KOLs. Donate tokens to unlock exclusive content and interact with their Mimotos!
+          </p>
+        </div>
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="lg:w-80 flex-shrink-0">
             <AdvancedFilters 
