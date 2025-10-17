@@ -11,6 +11,7 @@ import {
   DynamicWidget,
 } from '@dynamic-labs/sdk-react-core';
 import { SolanaWalletConnectors } from '@dynamic-labs/solana';
+import NavBar from '../components/NavBar';
 
 config.autoAddCss = false;
 library.add(fab);
@@ -23,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         walletConnectors: [SolanaWalletConnectors],
       }}
     >
-      <DynamicWidget />
+      <NavBar />
       <Component {...pageProps} />
     </DynamicContextProvider>
   );

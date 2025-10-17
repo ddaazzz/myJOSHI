@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import NavBar from '../components/NavBar'
 import Faq from '../components/Faq'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -48,7 +47,6 @@ const Joshiryoku: NextPage = () => {
 
       <main id="canvas" >
 
-        <NavBar />
         <div >
           <section className=" tw-items-center tw-m-auto tw-relative">
             <img src="img/banner.png" className='tw-w-full  tw-z-0 feature-banner' />

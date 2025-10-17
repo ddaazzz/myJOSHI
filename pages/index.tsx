@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import NavBar from '../components/NavBar'
 import Head from 'next/head'
 import { useState, useEffect } from 'react';
 import "slick-carousel/slick/slick.css";
@@ -44,7 +43,6 @@ const Home: NextPage = () => {
 
             <main id="canvas" >
 
-                <NavBar />
                 <div>
                     <video src="/Tree_animation.mp4" playsInline autoPlay loop muted preload={'auto'} className='feature-video'></video>
                 </div>

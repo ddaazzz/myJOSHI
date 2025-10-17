@@ -7,7 +7,7 @@ const NavBar = () => {
   const [expanded, setExpanded] = useState(false);
   const { locale, locales } = useRouter();
   const [showSwitcher, setShowSwitcher] = useState(false);
-  const { showAuthFlow } = useDynamicContext() || {};
+  const { setShowAuthFlow } = useDynamicContext() || {};
   return (
     <Navbar expand="xl" expanded={expanded} className="tw-px-3 md:tw-px-3 navbar" collapseOnSelect={true}>
       <Link href="/">
@@ -22,16 +22,18 @@ const NavBar = () => {
           <div className="border-right-nav nav-item"><Link href="/joshiryoku" ><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "Joshiryoku" : "女子力クラブ"}</a></Link></div>
           <div className="border-right-nav nav-item"><Link href="/mimoto/art"><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "Mimoto Marketplace" : "ミモトマーケット"}</a></Link></div>
           <div className="nav-item"><Link href="/faq"><a className="nav-link" onClick={() => setExpanded(false)}>{locale === "en-US" ? "FAQ" : "よくある質問"}</a></Link></div>
-          {typeof showAuthFlow === 'function' && (
-            <button
-              className="nav-link tw-font-bold tw-text-white tw-text-lg tw-font-[rocko] tw-shadow-none tw-bg-transparent hover:tw-bg-transparent focus:tw-bg-transparent tw-border-none tw-ml-4"
-              data-testid="ConnectButton"
-              onClick={showAuthFlow}
-              style={{ fontFamily: 'rocko', fontWeight: 700, color: 'white', background: 'transparent', border: 'none' }}
-            >
-              Connect Wallet
-            </button>
-          )}
+          <div className="border-right-nav nav-item">
+            {typeof setShowAuthFlow === 'function' ? (
+              <a
+                href="#"
+                className="nav-link"
+                onClick={e => { e.preventDefault(); setExpanded(false); setShowAuthFlow(true); }}
+                style={{ color: '#D06180', cursor: 'pointer' }}
+              >
+                {locale === 'en-US' ? 'Connect Wallet' : 'ウォレット接続'}
+              </a>
+            ) : null}
+          </div>
         </div>
         <div className="tw-flex tw-items-center tw-ml-auto">
           <div className="nav-item dropdown">
